@@ -1,17 +1,35 @@
-//console.log("Hello World!");
-//alert("Selamat Pagi")
-//document.write("Hello World!"); 
+function submitData() {
+  let name = document.getElementById("input-name").value;
+  let email = document.getElementById("input-email").value;
+  let phone = document.getElementById("input-phone").value;
+  let subject = document.getElementById("input-subject").value;
+  let message = document.getElementById("input-message").value;
 
-let nama ="Ahmad Yusril";
-let umur = 22;
-let isMuda = true;
+  if (name == "") {
+    return alert("Please fill your name!");
+  } else if (email == "") {
+    return alert("Please fill your email!");
+  } else if (phone == "") {
+    return alert("Please fill your Phone number!");
+  } else if (subject == "") {
+    return alert("Please choose the Subject!");
+  } else if (message == "") {
+    return alert("Please fill your Message!");
+  }
 
-Nama saya Ahmad Yusril saya 22 tahun
-console.log("nama saya Ahmad Yusril saya 22 tahun");
-console.log(`nama saya ${nama} saya =${umur} tahun`);
+     console.log(name);
+     console.log(email);
+     console.log(phone);
+     console.log(subject);
+     console.log(message);
 
-//let x = 50
-//let y = 20
+  let emailReceiver = "yusril7680@gmail.com";
 
-//let result = x + y;
-//console.log(result);
+  let a = document.createElement("a");
+  a.href = `mailto:${emailReceiver}?subject=${subject}&body=Halo, nama saya ${name}, ${message}, silakan kontak saya pada nomor ${phone}`;
+  a.click();
+
+  let data = { name, email, phone, subject, message };
+
+  console.log(data);
+}
