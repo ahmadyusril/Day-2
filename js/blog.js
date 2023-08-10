@@ -1,19 +1,19 @@
-let data = [];
+let dataBlog = [];
 
 function addBlog(event) {
   event.preventDefault();
 
   let title = document.getElementById("input-blog-title").value;
   let content = document.getElementById("input-blog-content").value;
-  let image = document.getElementById("input-blog-image").files;
+  let image = document.getElementById("input-blog-image");
 
-  image = URL.createObjectURL(image[0]);
-  console.log(image);
+  let img = URL.createObjectURL(image.files[0]);
+  console.log(img);
 
   let blog = {
     title,
     content,
-    image,
+    img,
     postAt: "10 August 2023",
     author: "Ahmad Yusril",
   };
@@ -33,7 +33,7 @@ function renderBlog() {
     document.getElementById("contents").innerHTML += `
       <div class="blog-list-item">
         <div class="blog-image">
-          <img src="${dataBlog[index].image}" alt="" />
+          <img src="${dataBlog[index].img}" alt="" />
         </div>
         <div class="blog-content">
           <div class="btn-group">
