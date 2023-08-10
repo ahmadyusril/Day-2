@@ -8,6 +8,7 @@
 
 body {
   margin: 0;
+
 }
 
 nav {
@@ -52,11 +53,10 @@ nav ul li .active {
   border-radius: 5px;
 }
 
-/* Blog Form */
 .blog-form {
   padding: 50px 0;
   display: flex;
-  justify-content: center;
+  justify-content:center;
 }
 
 .blog-form .form-container {
@@ -73,17 +73,15 @@ nav ul li .active {
   font-weight: 400;
 }
 
-.blog-form form input,
-textarea,
-select {
+.blog-form form input, textarea, select {
   width: 100%;
   font-size: 20px;
   font-weight: 400;
   padding: 8px;
   margin-top: 5px;
   margin-bottom: 20px;
-  background: #f4f3f3;
-  border: 1px solid #c4c4c4;
+  background: white;
+  border: 1px solid #cecece;
   border-radius: 8px;
 }
 
@@ -99,7 +97,7 @@ select {
   padding: 0;
   margin-top: 5px;
   margin-bottom: 20px;
-  background: #f4f3f3;
+  background: #cecece;
   border: 1px solid #c4c4c4;
   border-radius: 8px;
   cursor: pointer;
@@ -140,7 +138,6 @@ select {
   margin-left: auto;
 }
 
-/* Blog List */
 .blog .blog-list {
   margin-top: 80px;
   margin-bottom: 80px;
@@ -153,7 +150,7 @@ select {
   width: 80%;
   padding: 15px;
   margin-bottom: 20px;
-  border: 2px solid #dbdbdb;
+  border: 2px solid grey;
   border-radius: 8px;
   display: flex;
 }
@@ -173,46 +170,6 @@ select {
   flex: 2;
 }
 
-.blog .blog-list .btn-group {
-  text-align: right;
-  margin-bottom: 20px;
-}
-
-.blog .blog-list .btn-group .btn-edit {
-  padding: 5px 10px;
-  border: 0;
-  border-radius: 4px;
-  background: #dbdbdb;
-}
-
-.blog .blog-list .btn-group .btn-post {
-  padding: 5px 10px;
-  border: 0;
-  border-radius: 4px;
-  background: #ec4d37;
-  color: #fff;
-}
-
-.blog .blog-list h1 a {
-  text-decoration: none;
-  color: #000;
-}
-
-.blog .blog-list .detail-blog-content {
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 20px;
-}
-
-.blog .blog-list .blog-list-item p {
-  margin-top: 20px;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: justify;
-}
-
-/* blog detail */
 .blog-detail {
   display: flex;
   justify-content: center;
