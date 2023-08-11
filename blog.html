@@ -29,14 +29,49 @@
         <form onsubmit="addBlog(event)">
         <h1>Create Post Blog</h1>
         <div>
-          <label for="input-blog-title">Title</label>
-          <input id="input-blog-title" />
+          <label for="input-blog-title">Project Name</label>
+          <input id="input-project-name" />
         </div>
         <div>
-          <label for="input-blog-content">Content</label>
-          <textarea id="input-blog-content"></textarea>
+          <div class="input-date">
+            <div class="input-row">
+              <table>
+                <tr>
+                  <td>
+                    <label for="input-start">Start Date</label>
+                    <input id="input-start" type="date" />
+                  </td>
+
+                  <td>
+                    <label for="input-end">End Date</label>
+                    <input id="input-end" type="date" />
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
         <div>
+          <label>Description</label>
+          <input id="input-description" />
+        </div>
+        <div class="input-tech">
+          <h3>Technologies:</h3>
+          <table>
+            <tr>
+              <div class="checklist-box">
+                <input type="checkbox" id="input-nodejs-blog">
+                  <label for="input-nodejs-blog">Node.JS</label>
+                  <input type="checkbox" id="input-nextjs-blog">
+                  <label for="input-nextjs-blog">Next.JS</label>
+                  <input type="checkbox" id="input-reactjs-blog">
+                  <label for="input-reactjs-blog">React.JS</label>
+                  <input type="checkbox" id="input-typescript-blog">
+                  <label for="input-typescript-blog">TypeScript</label>
+              </div>
+          </table>
+        </div>
+        <div class="input-upload">
           <label>Upload Image</label>
           <div class="input-blog-image-group">
             <label for="input-blog-image">Attach files</label>
@@ -73,6 +108,49 @@
           </p>
         </div>
       </div>
+      <div class="blog-list-item">
+        <div class="blog-image">
+          <img src="image/blog-img.png" alt="">
+        </div>
+        <div class="blog-content">
+          <div class="button-group">
+            <button class="button-edit">Edit Post</button>
+            <button class="button-post">Delete Post</button>
+          </div>
+          <h1>
+            <a href="blog-detail.html" target="_blank">Pasar Coding Di Indonesia Dinilai Masih Menjanjikan</a>
+          </h1>
+          <div class="detail-blog-content">
+            10 Aug 2023 22:30 WIB | Ahmad Yusril
+          </div>
+          <p>
+            Test 123 Test 456
+          </p>
+        </div>
+      </div>
+      <div class="blog-list-item">
+        <div class="blog-image">
+          <img src="image/blog-img.png" alt="">
+        </div>
+        <div class="blog-content">
+          <div class="button-group">
+            <button class="button-edit">Edit Post</button>
+            <button class="button-post">Delete Post</button>
+          </div>
+          <h1>
+            <a href="blog-detail.html" target="_blank">Pasar Coding Di Indonesia Dinilai Masih Menjanjikan</a>
+          </h1>
+          <div class="detail-blog-content">
+            10 Aug 2023 22:30 WIB | Ahmad Yusril
+          </div>
+          <p>
+            Test 123 Test 456
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="name" class="blog-list">
+
     </div>
   </div>
 
