@@ -53,10 +53,15 @@ nav ul li .active {
   border-radius: 5px;
 }
 
+.blog-content {
+  margin: 0 auto;
+}
+
 .blog-form {
+  background-color: #dbdbdb;
   padding: 50px 0;
   display: flex;
-  justify-content:center;
+  justify-content: center;
 }
 
 .blog-form .form-container {
@@ -73,43 +78,145 @@ nav ul li .active {
   font-weight: 400;
 }
 
-.blog-form form input, textarea, select {
+.blog-form form {
   width: 100%;
   font-size: 20px;
   font-weight: 400;
   padding: 8px;
   margin-top: 5px;
   margin-bottom: 20px;
-  background: white;
-  border: 1px solid #cecece;
+  background-color: #dbdbdb;
+  border: none;
   border-radius: 8px;
 }
 
+.blog-form .input-title input {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 8px 0;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #f4f3f3;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+}
+
+.blog-form .blog-date {
+  display: flex;
+}
+
+.blog-form .blog-date label {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+
+.blog-form .blog-date .start-date {
+  flex: 50%;
+}
+
+.blog-form .blog-date .start-date input {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  padding: 8px 0;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #f4f3f3;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+}
+
+.blog-form .blog-date .end-date {
+  flex: 50%;
+  margin-left: 10px;
+}
+
+.blog-form .blog-date .end-date input {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 8px 0;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #f4f3f3;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+}
+
+
 .blog-form form textarea {
-  height: 250px;
+  height: 150px;
   resize: none;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 8px 0;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #f4f3f3;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+}
+
+.blog-form .form-container .tech {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.blog-form .form-container .tech .tech-left {
+  display: flex;
+}
+
+.blog-form .form-container .tech .tech-right {
+  display: flex;
+}
+
+.blog-form .form-container .tech .chk-left {
+  flex: 50%;
+}
+
+.blog-form .form-container .tech .chk-right {
+  flex: 50%;
 }
 
 .blog-form form .input-blog-image-group {
   width: 100%;
+  height: 50px;
   font-size: 20px;
   font-weight: 400;
   padding: 0;
   margin-top: 5px;
   margin-bottom: 20px;
-  background: #cecece;
+  background: #f4f3f3;
   border: 1px solid #c4c4c4;
   border-radius: 8px;
   cursor: pointer;
 }
 
-.blog-form form .input-blog-image-group label p {
+.blog-form form .input-blog-image-group label div p {
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-form form .input-blog-image-group label div {
+  width: 20%;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  background-color: #dbdbdb;
+  border-radius: 8px 0px 0px 8px;
 }
 
 .blog-form form .input-blog-image-group label {
   width: 95%;
-  padding: 10px;
+  padding-right: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -121,89 +228,117 @@ nav ul li .active {
 }
 
 .blog-form form button {
-  margin-top: 50px;
-  padding: 8px 20px;
+  padding: 8px 25px;
   font-size: 17px;
   background: #ec4d37;
-  border-radius: 8px;
+  border-radius: 20px;
   border: none;
   color: #fff;
   cursor: pointer;
 }
 
-.blog hr {
-  border: 1px solid #dbdbdb;
-  width: 80%;
-  margin-right: auto;
-  margin-left: auto;
+.blog-content {
+  width: 90%;
 }
 
-.blog .blog-list {
-  margin-top: 80px;
-  margin-bottom: 80px;
+.blog-content h1 {
+  text-align: center;
+}
+
+.blog-content .container-card {
+  width: 300px;
+  height: 530px;
+  margin: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px;
+  border-style: none;
+}
+
+.blog-content .container-card .card-content {
+  margin: auto;
+  padding: 8px;
+  border-radius: 8px;
+  
+}
+
+.blog-content .container-card .card-content img {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.blog-content .container-card .card-content h1 {
+  text-align: left;
+  font-size: 15px;
+}
+
+#container-desc {
+  width: 100%; /* Sesuaikan dengan lebar kontainer Anda */
+  display: -webkit-box; /* Mendukung Safari dan Chrome */
+  -webkit-line-clamp: 4; /* Batasan jumlah baris yang akan ditampilkan */
+  -webkit-box-orient: vertical; /* Mengatur orientasi kotak */
+  overflow: hidden; /* Mengatur overflow menjadi tersembunyi */
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+#container-desc::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to right, ellipsis, white 50%);
+  width: 100%;
+  height: 1.5em; /* Tinggi gradien */
+}
+
+
+.blog-content .container-card .card-content div i {
+  margin: 10px 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.blog-content .container-card .card-content div i:hover {
+  color: orangered;
+}
+
+.blog-content .container-card .card-content .ctn-btn {
   display: flex;
   align-items: center;
-  flex-direction: column;
-}
-
-.blog .blog-list .blog-list-item {
-  width: 80%;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 2px solid grey;
-  border-radius: 8px;
-  display: flex;
-}
-
-.blog .blog-list .blog-list-item .blog-image {
-  flex: 1;
-}
-
-.blog .blog-list .blog-list-item .blog-image img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-}
-
-.blog .blog-list .blog-list-item .blog-content {
-  padding-left: 20px;
-  flex: 2;
-}
-
-.blog-detail {
-  display: flex;
   justify-content: center;
 }
 
-.blog-detail-container {
-  width: 80%;
-  margin: 40px 0;
+.blog-content .container-card .card-content .ctn-btn .btn-left {
+  flex: 50%;
 }
 
-.blog-detail-container img {
-  width: 100%;
+.blog-content .container-card .card-content .ctn-btn .btn-right {
+  flex: 50%;
+  margin-left: 10px;
 }
 
-.blog-detail-container h1 {
-  font-style: normal;
-  font-weight: 800;
-  font-size: 44px;
-  line-height: 120%;
-  margin-bottom: 15px;
+.blog-content .container-card .card-content .ctn-btn button {
+  font-size: 15px;
+  background-color: orangered;
+  width: 130px;
+  color: white;
+  border-radius: 5px;
+  border-style: none;
+  margin: 0 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
-.blog-detail-container .author {
-  font-weight: 100;
-  font-size: 20px;
-  line-height: 120%;
-  margin-bottom: 20px;
+.blog-content .container-card .card-content .ctn-btn button:hover {
+  background-color: black;
 }
 
-.blog-detail-container p {
-  margin-top: 40px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 140%;
-  text-align: justify;
+.blog-content .card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
 }
