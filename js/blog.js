@@ -58,62 +58,75 @@ function renderBlog() {
 }
 
 function getFullTime(time) {
-  // new Date() mendapatkan terkait tanggal dan waktu kapan fungsinya dijalankan
-  // let time = new Date();
-  // console.log(time);
-
-  let monthName = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  // console.log(monthName[0]);
 
   let date = time.getDate();
-  // console.log(date);
 
   let monthIndex = time.getMonth();
-  // console.log(monthIndex);
-  // console.log(monthName[monthIndex]);
 
   let year = time.getFullYear();
-  // console.log(year);
 
   let hours = time.getHours();
+
   let minutes = time.getMinutes();
 
+  let month;
+  switch (monthIndex) {
+    case 1:
+      month = "Jan";
+      break;
+    case 2:
+      month = "Feb";
+      break;
+    case 3:
+      month = "Mar";
+      break;
+    case 4:
+      month = "Apr";
+      break;
+    case 5:
+      month = "May";
+      break;
+    case 6:
+      month = "Jun";
+      break;
+    case 7:
+      month = "Jul";
+      break;
+    case 8:
+      month = "Aug";
+      break;
+    case 9:
+      month = "Sep";
+      break;
+    case 10:
+      month = "Oct";
+      break;
+    case 11:
+      month = "Nov";
+      break;
+    case 12:
+      month = "Dec";
+      break;
+  }
+
   if (hours <= 9) {
-    // 09
     hours = "0" + hours;
   } else if (minutes <= 9) {
     minutes = "0" + minutes;
   }
 
-  // console.log(`${hours}:${minutes}`);
-
-  // 11 Aug 2023 09:18 WIB
-  return `${date} ${monthName[monthIndex]} ${year} ${hours}:${minutes} WIB`;
+  return `${date} ${month} ${year} ${hours}:${minutes} WIB`;
 }
 
-function getDistanceTime(time) {
+function getDistance(time) {
   let timeNow = new Date();
   let timePost = time;
 
-  let distance = timeNow - timePost; // hasilnya milisecond
-  // console.log(distance);
+  let distance = timeNow - timePost;
 
-  let milisecond = 1000; // milisecond
-  let secondInHours = 3600; // 1 jam 3600 Detik
-  let hoursInDays = 24; // 1 Hari 24 Jam
+  let milisecond = 1000;
+  let secondInHours = 3600;
+  let hoursInDays = 24;
 
   let distanceDay = Math.floor(
     distance / (milisecond * secondInHours * hoursInDays)
@@ -134,5 +147,5 @@ function getDistanceTime(time) {
 }
 
 setInterval(function () {
-  renderBlog();
+  renderProject();
 }, 3000);

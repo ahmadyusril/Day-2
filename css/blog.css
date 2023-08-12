@@ -273,11 +273,11 @@ nav ul li .active {
 }
 
 #container-desc {
-  width: 100%; /* Sesuaikan dengan lebar kontainer Anda */
-  display: -webkit-box; /* Mendukung Safari dan Chrome */
-  -webkit-line-clamp: 4; /* Batasan jumlah baris yang akan ditampilkan */
-  -webkit-box-orient: vertical; /* Mengatur orientasi kotak */
-  overflow: hidden; /* Mengatur overflow menjadi tersembunyi */
+  width: 100%; 
+  display: -webkit-box;
+  -webkit-line-clamp: 4; 
+  -webkit-box-orient: vertical; 
+  overflow: hidden; /
   position: relative;
   text-overflow: ellipsis;
 }
