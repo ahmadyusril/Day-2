@@ -10,6 +10,9 @@ function addBlog(event) {
   let img = URL.createObjectURL(image.files[0]);
   console.log(img);
 
+  let startDate = document.getElementById("input-blog-startDate").value;
+  let endDate = document.getElementById("input-blog-endDate").value;
+
   let blog = {
     title,
     content,
