@@ -12,13 +12,35 @@ function addBlog(event) {
 
   let startDate = document.getElementById("input-blog-startDate").value;
   let endDate = document.getElementById("input-blog-endDate").value;
+  let node = document.getElementById("nodejs");
+  let next = document.getElementById("nextjs");
+  let react = document.getElementById("reactjs");
+  let type = document.getElementById("typescript");
 
+  let checked = []
+
+  if (node.checked == true) {
+    checked.push(node.value);
+  }
+  if(next.checked == true) {
+    checked.push(next.value)
+  }
+  if(react.checked == true) {
+    checked.push(react.value)
+  }
+  if(type.checked == true) {
+    checked.push(type.value)
+  }
+  
   let blog = {
     title,
     content,
     img,
-    postAt: "10 August 2023",
+    postAt: new Date(),
     author: "Ahmad Yusril",
+    startDate,
+    endDate,
+    technologies: checked
   };
 
   dataBlog.push(blog);
@@ -28,34 +50,39 @@ function addBlog(event) {
 }
 
 function renderBlog() {
-  document.getElementById ("name").innerHTML = "";
+  document.getElementById("contents").innerHTML = "";
 
   for (let index = 0; index < dataBlog.length; index++) {
     console.log(dataBlog[index]);
-
-    document.getElementById ("name").innerHTML += `
-      <div class="blog-list-item">
-        <div class="blog-image">
-          <img src="${dataBlog[index].img}" alt="" />
+    const data = dataBlog[index]
+    document.getElementById("contents").innerHTML += `
+    <div class="container-card">
+    <div class="card-content">
+        <img src="${data.img}" alt="gambar">
+        <h1>
+            <a href="blog-detail.html" target="_blank">
+                ${data.title}
+            </a>
+        </h1>
+        <p>durasi : ${getDuration(data.startDate, data.endDate)}</p>
+        <p>posted at : ${getFullTime(data.postAt)}</p>
+        <p>${getDistance(data.postAt)}</p>
+        <div id="container-desc">
+        ${data.content}
         </div>
-        <div class="blog-content">
-          <div class="btn-group">
-            <button class="btn-edit">Edit Post</button>
-            <button class="btn-post">Delete Post</button>
-          </div>
-          <h1>
-            <a href="blog-detail.html" target="_blank"
-              >${dataBlog[index].title}</a
-            >
-          </h1>
-          <div class="detail-blog-content">
-            ${dataBlog[index].postAt} | ${dataBlog[index].author}
-          </div>
-          <p>
-            ${dataBlog[index].content}
-          </p>
+        <div style="margin-top: 5px;" id="technology">
+        ${data.technologies.map((technology) => getTechnology(technology)).join("")}
         </div>
-      </div>
+        <div class="ctn-btn">
+            <div class="btn-left">
+                <button>edit</button>
+            </div>
+            <div class="btn-right">
+                <button>delete</button>
+            </div>
+        </div>
+    </div>
+</div>
     `;
   }
 }
@@ -149,6 +176,55 @@ function getDistance(time) {
   }
 }
 
+function getTechnology(value) {
+  if (value == "nodejs") {
+    return `<img src="image/nodejs.png" style="width: 30px; height: 30px" />`
+  } else if (value == "react-js") {
+    return `<img src="image/react-js.png" style="width: 30px; height: 30px" />`
+  } else if (value == "nextjs") {
+    return `<img src="image/nextjs.png" style="width: 30px; height: 30px" />`
+  } else if (value == "typescript") {
+    return `<img src="image/typescript.png" style="width: 30px; height: 30px" />`
+  }
+}
+
+function getDuration(start, end) {
+  let projectStart = new Date(start)
+  let projectEnd = new Date(end)
+
+  let duration = projectEnd - projectStart
+
+  let monthDuration = Math.floor(duration / (30 * 24 * 60 * 60 * 1000))
+  if (monthDuration > 0) {
+      return monthDuration + ' bulan'
+  } else {
+      let weekDuration = Math.floor(duration / (7 * 24 * 60 * 60 * 1000))
+      if (weekDuration > 0) {
+          return weekDuration + ' minggu'
+      } else {
+          let dayDuration = Math.floor(duration / (24 * 60 * 60 * 1000))
+          if (dayDuration > 0) {
+              return dayDuration + ' hari'
+          } else {
+              let hourDuration = Math.floor(duration / (60 * 60 * 1000))
+              if (hourDuration > 0) {
+                  return hourDuration + ' jam'
+              } else {
+                  let minuteDuration = Math.floor(duration / (60 * 1000))
+                  if (minuteDuration > 0) {
+                      return minuteDuration + ' menit'
+                  } else {
+                      let secondDuration = Math.floor(duration / 1000)
+                      if (secondDuration > 0) {
+                          return secondDuration + ' detik'
+                      }
+                  }
+              }
+          }
+      }
+  } 
+}
+
 setInterval(function () {
-  renderProject();
+  renderBlog();
 }, 3000);
