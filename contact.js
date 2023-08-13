@@ -115,7 +115,7 @@ function submitData() {
   //   console.log(subject);
   //   console.log(message);
 
-  let emailReceiver = "abeldustin06@gmail.com";
+  let emailReceiver = "yusril7680@gmail.com";
 
   // <a href="mailto:abeldustin06@gmail.com?subject=Frontend&body=Bebas aja">Send Mail</a>
 
