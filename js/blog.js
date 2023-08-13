@@ -1,4 +1,21 @@
+let defaultBlog = {
+  title : "Dumbways Mobile App - 2023",
+  content : "App that used for dumbways student, it was deployed and can downloaded on playstore. Happy download",
+  img : "image/senna.jpg",
+  author : "Ahmad Yusril",
+  postAt : new Date(),
+  startDate : "2023-07-08",
+  endDate: "2023-08-08",
+  technologies: [
+    "nodejs",
+    "nextjs",
+    "react-js",
+    "typescript"
+  ]
+} 
+
 let dataBlog = [];
+dataBlog.push(defaultBlog)
 
 function addBlog(event) {
   event.preventDefault();
