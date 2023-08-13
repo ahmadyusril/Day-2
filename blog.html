@@ -1,0 +1,131 @@
+<html>
+  <head>
+    <title>Creating Blog Page</title>
+    <link rel="stylesheet" href="css/blog.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+          <ul>
+              <li>
+                  <img src="image/logo.png" alt="logo" />
+              </li>
+              <li>
+                  <a href="index.html">Home</a>
+              </li>
+              <li>
+                  <a href="blog.html" class="active">My Project</a>
+              </li>
+          </ul>
+      </div>
+      <div class="nav-right">
+          <a href="contact.html">Contact</a>
+      </div>
+  </nav>
+
+  <div class="blog">
+    <div class="blog-form">
+        <div class="form-container">
+            <form id="form">
+                <h1>ADD MY PROJECT</h1>
+                <div class="input-title">
+                    <label for="input-blog-title">Project Name</label>
+                    <input type="text" id="input-blog-title">
+                </div>
+                <div class="blog-date">
+                    <div class="start-date">
+                        <label for="input-blog-startDate">Start Date</label>
+                        <input type="date" id="input-blog-startDate">
+                    </div>
+                    <div class="end-date">
+                        <label for="input-blog-endDate">End Date</label>
+                        <input type="date" id="input-blog-endDate">
+                    </div>
+                </div>
+                <div>
+                    <label for="input-blog-content">Description</label>
+                    <textarea id="input-blog-content"></textarea>
+                </div>
+                <div>
+                    <label>Technologies</label>
+                    <div class="tech">
+                        <div class="tech-left">
+                            <div class="chk-left">
+                                <input type="checkbox" id="nodejs" class="multi-input" value="nodejs">
+                                <label>Node Js</label>
+                            </div>
+                            <div class="chk-right">
+                                <input type="checkbox" id="nextjs" class="multi-input" value="nextjs">
+                                <label>Next Js</label>
+                            </div>
+                        </div>
+                        <div class="tech-right">
+                            <div class="chk-left">
+                                <input type="checkbox" id="reactjs" class="multi-input" value="react-js">
+                                <label>React Js</label>
+                            </div>
+                            <div class="chk-right">
+                                <input type="checkbox" id="typescript" class="multi-input" value="typescript">
+                                <label>TypeScript</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label>Upload Image</label>
+                    <div class="input-blog-image-group">
+                    <label for="input-blog-image">
+                        <div>
+                            <p>choose</p>
+                        </div>
+                        <i class="fa-solid fa-paperclip"></i>
+                    </label>
+                    <input type="file" id="input-blog-image" hidden />
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button type="submit" onclick="addBlog(event)">submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <hr class="line"/>
+    <div class="blog-content">
+      <h1>MY PROJECT</h1>
+      <div id="contents" class="card">
+          <div class="container-card">
+              <div class="card-content">
+                  <img src="image/senna.jpg" alt="gambar">
+                  <h1>
+                      <a href="blog-detail.html" target="_blank">
+                          Dumbways Mobile App - 2023
+                      </a>
+                  </h1>
+                  <p>durasi : 3 bulan</p>
+                  <p>posted at : 2023-10-08</p>
+                  <p></p>
+                  <div id="container-desc">
+                      App that used for dumbways student, it was deployed and can downloaded on playstore. Happy download
+                  </div>
+                  <div style="margin-top: 5px;" id="technology">
+                    <img src="image/android.png" style="width: 30px; height: 30px" />
+                    <img src="image/JavaScript.png" style="width: 30px; height: 30px" />
+                    <img src="image/nodejs.png" style="width: 30px; height: 30px" />
+                  </div>
+                  <div class="ctn-btn">
+                      <div class="btn-left">
+                          <button>edit</button>
+                      </div>
+                      <div class="btn-right">
+                          <button>delete</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+    <script src="js/blog.js"></script>
+  </body>
+</html>
