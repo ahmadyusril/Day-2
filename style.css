@@ -71,8 +71,13 @@ button:hover {
 .container {
   display: flex;
   justify-content: center;
-  height: 90vh;
+  /* height: 90vh; */
   align-items: center;
+  width: 550px;
+  margin: auto;
+  padding: 15px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 section {
@@ -88,6 +93,15 @@ section {
 
 .left {
   flex: 30%;
+}
+
+.card-container {
+  width: 350px;
+  border: 1px solid black;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #cecece;
 }
 
 .right {
@@ -106,4 +120,75 @@ section {
 .social-media i {
   margin-right: 20px;
   font-size: 30px;
+}
+
+#barsmenu {
+  display: none;
+}
+
+.hamburger a {
+  color: black;
+}
+
+.hamburger-nav-container {
+  font-size: 23px;
+  list-style-type: none;
+  display: none;
+}
+
+.hamburger-nav-container a {
+  text-decoration: none;
+  color: white;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.hamburger-nav-container .hamburger-active {
+  text-decoration: none;
+  color: white;
+  background-color: orangered;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+@media only screen and (max-width: 900px) {
+  .card-container {
+    width: 100%;
+  }
+
+  .left {
+    flex: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .right {
+    margin-left: 0px;
+  }
+
+  section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .skill {
+    flex-direction: column;
+  }
+
+  .item-collapse {
+    display: none;
+  }
+
+  #barsmenu {
+    display: block;
+  }
 }

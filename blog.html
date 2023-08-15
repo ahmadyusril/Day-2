@@ -10,16 +10,25 @@
               <li>
                   <img src="image/logo.png" alt="logo" />
               </li>
-              <li>
+              <li class="item-collapse">
                   <a href="index.html">Home</a>
               </li>
-              <li>
+              <li class="item-collapse">
                   <a href="blog.html" class="active">My Project</a>
               </li>
           </ul>
       </div>
-      <div class="nav-right">
+      <div class="nav-right item-collapse">
           <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-right" id="barsmenu">
+        <button
+            style="background-color: transparent; border: none; cursor: pointer;"
+            onclick="openHamburger();"
+            >
+        <i class="fa-2x fa-solid fa-bars"></i>
+        </button>
       </div>
   </nav>
 
@@ -90,42 +99,43 @@
         </div>
     </div>
 
-    <hr class="line"/>
-    <div class="blog-content">
-      <h1>MY PROJECT</h1>
-      <div id="contents" class="card">
-          <div class="container-card">
-              <div class="card-content">
-                  <img src="image/senna.jpg" alt="gambar">
-                  <h1>
-                      <a href="blog-detail.html" target="_blank">
-                          Dumbways Mobile App - 2023
-                      </a>
-                  </h1>
-                  <p>durasi : 3 bulan</p>
-                  <p>posted at : 2023-10-08</p>
-                  <p></p>
-                  <div id="container-desc">
-                      App that used for dumbways student, it was deployed and can downloaded on playstore. Happy download
-                  </div>
-                  <div style="margin-top: 5px;" id="technology">
-                    <img src="image/android.png" style="width: 30px; height: 30px" />
-                    <img src="image/JavaScript.png" style="width: 30px; height: 30px" />
-                    <img src="image/nodejs.png" style="width: 30px; height: 30px" />
-                  </div>
-                  <div class="ctn-btn">
-                      <div class="btn-left">
-                          <button>edit</button>
-                      </div>
-                      <div class="btn-right">
-                          <button>delete</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-    <script src="js/blog.js"></script>
-  </body>
-</html>
+        <hr class="line"/>
+        <div class="blog-content">
+        <h1>MY PROJECT</h1>
+        <div id="contents" class="card">
+            <div class="container-card">
+                <div class="card-content">
+                    <img src="image/senna.jpg" alt="gambar">
+                    <h1>
+                        <a href="blog-detail.html" target="_blank">
+                            Dumbways Mobile App - 2023
+                        </a>
+                    </h1>
+                    <p>durasi : 3 bulan</p>
+                    <p>posted at : 2023-10-08</p>
+                    <p></p>
+                    <div id="container-desc">
+                        App that used for dumbways student, it was deployed and can downloaded on playstore. Happy download
+                    </div>
+                    <div style="margin-top: 5px;" id="technology">
+                        <img src="image/android.png" style="width: 30px; height: 30px" />
+                        <img src="image/JavaScript.png" style="width: 30px; height: 30px" />
+                        <img src="image/nodejs.png" style="width: 30px; height: 30px" />
+                    </div>
+                    <div class="ctn-btn">
+                        <div class="btn-left">
+                            <button>edit</button>
+                        </div>
+                        <div class="btn-right">
+                            <button>delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+        <script src="js/blog.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+    </html>
