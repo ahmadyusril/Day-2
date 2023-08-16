@@ -16,16 +16,25 @@
                 <li>
                     <img src="image/logo.png" alt="logo" />
                 </li>
-                <li>
-                    <a href="index.html">Home</a>
+                <li class="item-collapse">
+                    <a href="index.html" class="active">Home</a>
                 </li>
-                <li>
-                    <a href="blog.html" class="active">My Project</a>
+                <li class="item-collapse">
+                    <a href="blog.html">My Project</a>
                 </li>
             </ul>
         </div>
-        <div class="nav-right">
+        <div class="nav-right item-collapse">
             <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-right" id="barsmenu">
+            <button 
+                style="background-color: transparent; border: none; cursor: pointer;"
+                onclick="openHamburger()"
+            >
+             <i class="fa-2x fa-solid fa-bars">
+             </i>
+            </button>
         </div>
     </nav>
 
@@ -81,13 +90,14 @@
                 margin: auto;
          " />
                 <h1 style="text-align: center;
-    font-weight: bold;
-    line-height: 10px;">Ahmad Yusril</h1>
+                            font-weight: bold;
+                            line-height: 10px;">Ahmad Yusril</h1>
                 <p style="text-align: center;">Fullstack Developer</p>
             </div>
         </div>
       </section>
     </div>
     <script src="js/index.js"></script>
+    <script src="js/blog.js"></script>
   </body>
 </html>

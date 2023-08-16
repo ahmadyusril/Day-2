@@ -139,6 +139,9 @@ section {
   display: none;
 }
 
+.hamburger {
+  display: none;
+}
 .hamburger a {
   color: black;
 }

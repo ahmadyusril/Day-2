@@ -1,6 +1,8 @@
 let hamburgerIsOpen = false;
 const openHamburger = () => {
-    let hamburgerNavContainer = document.getElementById("hamburger-nav-container");
+    let hamburgerNavContainer = document.getElementById(
+        "hamburger-nav-container"
+        );
     
     if (!hamburgerisOpen) {
         hamburgerNavContainer.style.display = "block";

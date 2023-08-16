@@ -32,3 +32,5 @@ desktopM: `max-width: 1200px`
 desktopL: `max-width: 1400px`
 
 https://nusantech.com/modul-3-13-css-media-query/
+
+https://jefrydco.id/blog/oop-object-oriented-programming-javascript-explanation
