@@ -4,7 +4,7 @@ const openHamburger = () => {
         "hamburger-nav-container"
         );
     
-    if (!hamburgerisOpen) {
+    if (!hamburgerIsOpen) {
         hamburgerNavContainer.style.display = "block";
         hamburgerIsOpen = true;
     }   else {
