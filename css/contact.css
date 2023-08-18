@@ -6,6 +6,10 @@
   color: black;
 }
 
+body {
+  margin: 0;
+}
+
 form {
   width: 350px;
   margin: 50px auto;
@@ -128,7 +132,11 @@ nav ul li .active {
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 600px) {
+  section {
+    flex-direction: column;
+  }
+  
   .blog-form .form-container {
     width: 90%;
   }
