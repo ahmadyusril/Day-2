@@ -34,3 +34,5 @@ desktopL: `max-width: 1400px`
 https://nusantech.com/modul-3-13-css-media-query/
 
 https://jefrydco.id/blog/oop-object-oriented-programming-javascript-explanation
+
+https://www.canva.com/design/DAFsLQnBAhw/VeyRO7XzBprL8HaF1Z2TiQ/view?utm_content=DAFsLQnBAhw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink#9
