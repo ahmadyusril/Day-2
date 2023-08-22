@@ -8,7 +8,10 @@
 
 body {
   margin: 0;
-
+  background-image: url('https://static.zerochan.net/Lycoris.Recoil.full.3843813.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 nav {
@@ -58,7 +61,7 @@ nav ul li .active {
 }
 
 .blog-form {
-  background-color: #dbdbdb;
+  background-color: transparent;
   padding: 50px 0;
   display: flex;
   justify-content: center;
@@ -94,8 +97,8 @@ nav ul li .active {
   width: 100%;
   font-size: 20px;
   font-weight: 400;
-  padding: 8px 0;
-  margin-top: 5px;
+  padding: 12px;
+  margin-top: 10px;
   margin-bottom: 20px;
   background-color: #f4f3f3;
   border: 1px solid #c4c4c4;
@@ -155,8 +158,8 @@ nav ul li .active {
   width: 100%;
   font-size: 20px;
   font-weight: 400;
-  padding: 8px 0;
-  margin-top: 5px;
+  padding: 12px;
+  margin-top: 10px;
   margin-bottom: 20px;
   background-color: #f4f3f3;
   border: 1px solid #c4c4c4;
@@ -230,10 +233,10 @@ nav ul li .active {
 .blog-form form button {
   padding: 8px 25px;
   font-size: 17px;
-  background: #ec4d37;
+  background: orangered;
   border-radius: 20px;
   border: none;
-  color: #fff;
+  color: white;
   cursor: pointer;
 }
 
@@ -255,10 +258,10 @@ nav ul li .active {
 }
 
 .blog-content .container-card .card-content {
+  background-color: #c4c4c4 ;
   margin: auto;
   padding: 8px;
   border-radius: 8px;
-  
 }
 
 .blog-content .container-card .card-content img {
@@ -310,11 +313,11 @@ nav ul li .active {
 }
 
 .blog-content .container-card .card-content .ctn-btn .btn-left {
-  flex: 50%;
+  flex: auto;
 }
 
 .blog-content .container-card .card-content .ctn-btn .btn-right {
-  flex: 50%;
+  flex: auto;
   margin-left: 10px;
 }
 

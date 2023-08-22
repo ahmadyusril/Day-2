@@ -8,6 +8,17 @@
 
 body {
   margin: 0;
+  background-image: url('https://static.zerochan.net/Lycoris.Recoil.full.3843813.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body {
+  background-image: url('/image/rikoriko.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 nav {
@@ -67,7 +78,6 @@ nav ul li .active {
 }
 
 button {
-  box-shadow: 0px 0px 5px grey;
   border-radius: 15px;
   color: white;
   background-color: orangered;
@@ -82,19 +92,24 @@ button:hover {
 }
 
 .container {
+  background-image: url('https://static.zerochan.net/Lycoris.Recoil.full.3843813.jpg');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   justify-content: center;
-  /* height: 90vh; */
+  height: 90vh;
   align-items: center;
   /* width: 550px; */
-  margin: auto;
+  margin: center;
   padding: 15px;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 50px;
 }
 
 section {
   /* flex-direction: column; */
+  background-color: #f8f8f8;
   display: flex;
   max-width: 1200px;
   border: 1px solid black;
@@ -103,14 +118,14 @@ section {
   /* height: 550px; */
 }
 
-.card-container {
+/* .card-container {
   width: 350px;
   border: 1px solid black;
   margin: auto;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 15px #cecece;
-}
+} */
 
 .left {
   flex: 60%;
