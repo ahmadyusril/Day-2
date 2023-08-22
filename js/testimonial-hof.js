@@ -86,6 +86,7 @@
 // document.getElementById("testimonials").innerHTML = testimonialHTML;
 
 // array of object
+
 const testimonialData = [
   {
     author: "Kiana Kaslana",
