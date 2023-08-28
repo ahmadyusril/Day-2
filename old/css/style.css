@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+
+body {
+  margin: 0;
+  background-image: url('https://static.zerochan.net/Lycoris.Recoil.full.3843813.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body {
+  background-image: url('/image/rikoriko.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+nav {
+  background-color: #ebeaea;
+  display: flex;
+  align-items: center;
+  height: 10vh;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+
+nav ul li {
+  margin-right: 25px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul li .active {
+  color: orangered;
+}
+
+.nav-left {
+  flex: 50%;
+}
+
+.nav-right {
+  flex: 50%;
+  text-align: end;
+  margin-right: 25px;
+}
+
+.nav-right a {
+  background-color: orangered;
+  padding: 8px 20px;
+  color: white;
+  border-radius: 5px;
+}
+
+.left-mobile {
+  margin: auto;
+  padding: 15px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.right-mobile {
+  border: 1px solid black;
+  box-shadow: 0px 0px 5px grey;
+  border-radius: 10px;
+  margin: 50px auto;
+}
+
+button {
+  border-radius: 15px;
+  color: white;
+  background-color: orangered;
+  padding: 6px 26px;
+  font-size: 16px;
+  font-family: Arial;
+  letter-spacing: 2mm;
+}
+
+button:hover {
+  background-color: #cecece
+}
+
+.container {
+  background-image: url('https://static.zerochan.net/Lycoris.Recoil.full.3843813.jpg');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+  align-items: center;
+  /* width: 550px; */
+  margin: center;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+section {
+  /* flex-direction: column; */
+  background-color: #f8f8f8;
+  display: flex;
+  max-width: 1200px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 80px;
+  /* height: 550px; */
+}
+
+/* .card-container {
+  width: 350px;
+  border: 1px solid black;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #cecece;
+} */
+
+.left {
+  flex: 60%;
+}
+
+.right {
+  flex: 40%;
+  margin-left: 50px;
+  text-align: justify;
+}
+
+.skill {
+  display: flex;
+  margin-top: 30px;
+  text-align: justify;
+  gap: 20px;
+}
+
+.social-media i {
+  margin-right: 20px;
+  font-size: 30px;
+}
+
+#barsmenu {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+}
+.hamburger a {
+  color: black;
+}
+
+.hamburger-nav-container {
+  font-size: 23px;
+  list-style-type: none;
+  display: none;
+}
+
+.hamburger-nav-container a {
+  text-decoration: none;
+  color: white;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.hamburger-nav-container .hamburger-active {
+  text-decoration: none;
+  color: white;
+  background-color: orangered;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+@media only screen and (max-width: 900px) {
+  .card-container {
+    width: 100%;
+  }
+
+  .left {
+    flex: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .right {
+    margin-left: 0px;
+  }
+
+  section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  section {
+    flex-direction: column;
+  }
+
+  .skill {
+    flex-direction: column;
+  }
+
+  .item-collapse {
+    display: none;
+  }
+
+  #barsmenu {
+    display: block;
+  }
+}
