@@ -1,0 +1,108 @@
+<html>
+<head>
+    <link rel="icon" href="image/icon.png" />
+    <title>Personal Web</title>
+    <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <ul>
+                <li>
+                    <img src="image/logo.png" alt="logo" />
+                </li>
+                <li class="item-collapse">
+                    <a href="index.html" class="active">Home</a>
+                </li>
+                <li class="item-collapse">
+                    <a href="blog.html">My Project</a>
+                </li>
+                <li class="item-collapse">
+                    <a href="testimonial.html">Testimonials</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right item-collapse">
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-right" id="barsmenu">
+            <button 
+                style="background-color: transparent; border: none; cursor: pointer;"
+                onclick="openHamburger()"
+            >
+             <i class="fa-2x fa-solid fa-bars">
+             </i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="hamburger-nav-container" id="hamburger-nav-container">
+        <a href="index.html" class="hamburger-active">Home</a>
+        <a href="blog.html">My Project</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="container">   
+        <section>
+            <div class="left">
+                <div class="left-mobile">
+                <h1>Hi Welcome to my hut</h1>
+                <p style="
+                font-size: larger;
+                margin-top: 5px;
+                text-align: justify;">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et
+                    dolore magna aliqua. At volutpat diam ut venenatis tellus in. Accumsan tortor posuere ac ut
+                    consequat
+                    semper
+                    viverra nam libero. Pretium viverra suspendisse potenti nullam ac. Eleifend quam adipiscing
+                    vitae proin
+                    sagittis nisl rhoncus. Maecenas sed enim ut sem viverra aliquet eget sit.
+                </p>
+                    <button>
+                        <a href="contact.html">contact </a>
+
+                        </button>
+
+                    <p style="
+                    font-size: larger;">
+                    <a>Download CV</a>
+                        </p>
+                        <p style="
+                        letter-spacing: 15px;
+                        text-align: center;
+                        ">
+                    <div style="margin-top: 5px;">
+                        <img src="image/facebook.png" style="width: 45px;" />
+                        <img src="image/linkedin.png" style="width: 45px;" />
+                        <img src="image/instagram.png" style="width: 45px;" />
+                    </div>
+            </div>
+    </div>
+
+    <div class="right">
+        <div class= "right-mobile">
+                <img src="image/profil.jpeg" style="width: 100%;
+                border: 1px solid white;
+                border-radius: 10px;
+                margin: auto;
+         " />
+                <h1 style="text-align: center;
+                            font-weight: bold;
+                            line-height: 10px;">Ahmad Yusril</h1>
+                <p style="text-align: center;">Fullstack Developer</p>
+            </div>
+        </div>
+      </section>
+    </div>
+    <script src="js/index_ham.js"></script>
+    <script src="js/blog.js"></script>
+  </body>
+</html>

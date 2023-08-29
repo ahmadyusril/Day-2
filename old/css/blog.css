@@ -1,0 +1,438 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+
+body {
+  margin: 0;
+  background-image: url('https://static.zerochan.net/Lycoris.Recoil.full.3843813.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+nav {
+  background-color: #ebeaea;
+  display: flex;
+  align-items: center;
+  height: 10vh;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+
+nav ul li {
+  margin-right: 25px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul li .active {
+  color: orangered;
+}
+
+.nav-left {
+  flex: 50%;
+}
+
+.nav-right {
+  flex: 50%;
+  text-align: end;
+  margin-right: 25px;
+}
+
+.nav-right a {
+  background-color: orangered;
+  padding: 8px 20px;
+  color: white;
+  border-radius: 5px;
+}
+
+.blog-content {
+  margin: 0 auto;
+}
+
+.blog-form {
+  background-color: transparent;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.blog-form .form-container {
+  width: 500px;
+}
+
+.blog-form .form-container h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.blog-form form label {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.blog-form form {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #dbdbdb;
+  border: none;
+  border-radius: 8px;
+}
+
+.blog-form .input-title input {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #f4f3f3;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+}
+
+.blog-form .blog-date {
+  display: flex;
+}
+
+.blog-form .blog-date label {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+
+.blog-form .blog-date .start-date {
+  flex: 50%;
+}
+
+.blog-form .blog-date .start-date input {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  padding: 8px 0;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #f4f3f3;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+}
+
+.blog-form .blog-date .end-date {
+  flex: 50%;
+  margin-left: 10px;
+}
+
+.blog-form .blog-date .end-date input {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 8px 0;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #f4f3f3;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+}
+
+
+.blog-form form textarea {
+  height: 150px;
+  resize: none;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #f4f3f3;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+}
+
+.blog-form .form-container .tech {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.blog-form .form-container .tech .tech-left {
+  display: flex;
+}
+
+.blog-form .form-container .tech .tech-right {
+  display: flex;
+}
+
+.blog-form .form-container .tech .chk-left {
+  flex: 50%;
+}
+
+.blog-form .form-container .tech .chk-right {
+  flex: 50%;
+}
+
+.blog-form form .input-blog-image-group {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 0;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background: #f4f3f3;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.blog-form form .input-blog-image-group label div p {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-form form .input-blog-image-group label div {
+  width: 20%;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  background-color: #dbdbdb;
+  border-radius: 8px 0px 0px 8px;
+}
+
+.blog-form form .input-blog-image-group label {
+  width: 95%;
+  padding-right: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blog-form form .button-group {
+  text-align: right;
+}
+
+.blog-form form button {
+  padding: 8px 25px;
+  font-size: 17px;
+  background: orangered;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.blog-content {
+  width: 90%;
+}
+
+.blog-content h1 {
+  text-align: center;
+}
+
+.blog-content .container-card {
+  width: 500px;
+  height: 530px;
+  margin: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px;
+  border-style: none;
+}
+
+.blog-content .container-card .card-content {
+  background-color: #c4c4c4 ;
+  margin: auto;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.blog-content .container-card .card-content img {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.blog-content .container-card .card-content h1 {
+  text-align: left;
+  font-size: 15px;
+}
+
+#container-desc {
+  width: 100%; 
+  display: -webkit-box;
+  -webkit-line-clamp: 4; 
+  -webkit-box-orient: vertical; 
+  overflow: hidden;   
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+#container-desc::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to right, ellipsis, white 50%);
+  width: 100%;
+  height: 1.5em; /* Tinggi gradien */
+}
+
+
+.blog-content .container-card .card-content div i {
+  margin: 10px 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.blog-content .container-card .card-content div i:hover {
+  color: orangered;
+}
+
+.blog-content .container-card .card-content .ctn-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-content .container-card .card-content .ctn-btn .btn-left {
+  flex: auto;
+}
+
+.blog-content .container-card .card-content .ctn-btn .btn-right {
+  flex: auto;
+  margin-left: 10px;
+}
+
+.blog-content .container-card .card-content .ctn-btn button {
+  font-size: 15px;
+  background-color: orangered;
+  width: 130px;
+  color: white;
+  border-radius: 5px;
+  border-style: none;
+  margin: 0 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.blog-content .container-card .card-content .ctn-btn button:hover {
+  background-color: black;
+}
+
+.blog-content .card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
+}
+
+.blog-detail {
+  display: flex;
+  justify-content: center;
+}
+
+.blog-detail-container {
+  width: 80%;
+  margin: 40px 0;
+}
+
+.blog-detail-container img {
+  width: 100%;
+}
+
+.blog-detail-container h1 {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 120%;
+  margin-bottom: 15px;
+}
+
+.blog-detail-container .author {
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 120%;
+  margin-bottom: 20px;
+}
+
+.blog-detail-container p {
+  margin-top: 40px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 140%;
+  text-align: justify;
+}
+
+#barsmenu {
+  display: none;
+}
+
+.hamburger-nav-container {
+  font-size: 23px;
+  list-style-type: none;
+  display: none;
+}
+
+.hamburger-nav-container a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #9a9a9a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+.hamburger-nav-container .hamburger-active {
+  text-decoration: none;
+  color: #fff;
+  background-color: orangered;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+@media only screen and (max-width: 900px) {
+  .blog .blog-list .blog-list-item {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .blog-form .form-container {
+    width: 90%;
+  }
+
+  .item-collapse {
+    display: none;
+  }
+
+  #barsmenu {
+    display: block;
+  }
+}
