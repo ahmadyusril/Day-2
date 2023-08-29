@@ -3,12 +3,17 @@ const request = require('express/lib/request');
 const response = require('express/lib/response');
 const app = express();
 const path = require("path");
+
 const getDuration = require("./js/getDuration");
 const getFullTime = require("./js/getFullTime");
 const getDistance = require("./js/getDistance");
 
+const config = require('./src/config/config.json');
+const { Sequelize, QueryTypes } = require('sequelize');
+const sequelize = new Sequelize(config.development);
+
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'Bootstrap/views/'));
+app.set('views', path.join(__dirname, 'src/views/'));
 
 app.use('/image', express.static('image'))
 app.use('/js', express.static('js'))
