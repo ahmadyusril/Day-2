@@ -109,12 +109,6 @@ function submitData() {
     return alert("Message harus diisi!");
   }
 
-  //   console.log(name);
-  //   console.log(email);
-  //   console.log(phone);
-  //   console.log(subject);
-  //   console.log(message);
-
   let emailReceiver = "yusril7680@gmail.com";
 
   // <a href="mailto:abeldustin06@gmail.com?subject=Frontend&body=Bebas aja">Send Mail</a>

@@ -1,129 +1,342 @@
 const express = require("express");
-const request = require('express/lib/request');
-const response = require('express/lib/response');
 const app = express();
+const port = 5000
 const path = require("path");
+const bcrypt = require("bcrypt");
+const session = require("express-session");
+const flash = require("express-flash");
 
-const getDuration = require("./js/getDuration");
-const getFullTime = require("./js/getFullTime");
-const getDistance = require("./js/getDistance");
+// set serving static file
+app.use(express.static(path.join(__dirname, "src/assets")));
 
+// set serving static file specific
+app.use(express.static(path.join(__dirname, "/image")));
+
+// parsing data
+app.use(express.urlencoded({ extended: false }));
+
+// Sequelize init
 const config = require('./src/config/config.json');
 const { Sequelize, QueryTypes } = require('sequelize');
 const sequelize = new Sequelize(config.development);
 
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'src/views/'));
+// Setup call hbs with sub folder
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "src/views/"));
 
-app.use('/image', express.static('image'))
-app.use('/js', express.static('js'))
+app.use("/image", express.static("image"))
+app.use("/js", express.static("js"))
 app.use(express.urlencoded({ extended: false }));
 
-let dummyData = [
-    {
-        id:0,
-        title:"Dumbways Mobile App - 2023",
-        postedAt:"27 Aug 2023 15:00 WIB",
-        startDate:"2023-08-27",
-        fullTimeStartDate:"27 Aug 2023",
-        endDate:"2023-11-27",
-        fullTimeEndDate:"27 Nov 2023",
-        duration:"3 Bulan",
-        content:"App that used for dumbways student, it was deployed and can downloaded on playstore. Happy download",
-        technologies:["node","react"],
-        timeAfterPosted:""
-    },
-    {
-        id:1,
-        title:"Dumbways Mobile App - 2023",
-        postedAt:"27 Aug 2023 15:00 WIB",
-        startDate:"2023-08-27",
-        fullTimeStartDate:"27 Aug 2023",
-        endDate:"2023-11-27",
-        fullTimeEndDate:"27 Nov 2023",
-        duration:"3 Bulan",
-        content:"App that used for dumbways student, it was deployed and can downloaded on playstore. Happy download",
-        technologies:["node"],
-        timeAfterPosted:""
-    },
-    {
-        id:2,
-        title:"Dumbways Mobile App - 2023",
-        postedAt:"27 Aug 2023 15:00 WIB",
-        startDate:"2023-08-27",
-        fullTimeStartDate:"27 Aug 2023",
-        endDate:"2023-11-27",
-        fullTimeEndDate:"27 Nov 2023",
-        duration:"3 Bulan",
-        content:"App that used for dumbways student, it was deployed and can downloaded on playstore. Happy download",
-        technologies:["react"],
-        timeAfterPosted:""
-    },
-]
+// setup flash
+app.use(flash());
 
-app.get("/", async (request, response) => {
-    await getTimeAfterPosted(dummyData);
-    await response.render('index', {blogs : dummyData})
-})
+// setup session
+app.use(
+	session({
+		cookie: {
+			httpOnly: true,
+			secure: false,
+			maxAge: 1000 * 60 * 60 * 2,
+		},
+		store: new session.MemoryStore(),
+		saveUninitialized: true,
+		resave: false,
+		secret: "secretValue",
+	})
+);
 
+// routing kayaknya
+app.get("/", home);
+app.get("/blog", blog);
+app.get("/contact", contactMe);
+app.get("/blog-detail/id", blogDetail);
+app.get("/edit-blog", editBlog);
+app.post("/form-blog", addBlog);
+app.get("/delete-blog/:id", deleteBlog);
 
-app.get("/contact", (request, response) => {
-    response.render('contact')
-})
+// login, Register, logout
+app.get("/register", formRegister);
+app.post("/register", addUser);
+app.get("/login", formLogin);
+app.post("/login", userLogin);
+app.get("/logout", logout);
 
-app.get("/blog", (request, response) => {
-response.render('blog')
-})
-app.post("/blog", function (request, response) {
-    const {title, content, startDate, endDate, technologies} = request.body;
-    const duration = getDuration(new Date(startDate), new Date(endDate));
-    const postedAt = getFullTime(new Date());
-    const fullTimeStartDate = getFullTime(new Date(startDate));
-    const fullTimeEndDate = getFullTime(new Date(endDate));
-    const blog = {
-        id: dummyData.length,
-        title,
-        postedAt,
-        startDate,
-        fullTimeStartDate,
-        endDate,
-        fullTimeEndDate,
-        duration,
-        content,
-        technologies,
-        timeAfterPosted: "0 second ago",
-    }
-    console.log(blog);
-    dummyData.push(blog);
-    response.redirect("/");
-})
-
-app.get("/blog-content/:id", function (request, response) {
-    let id = request.params.id;
-    response.render("blog-content", {data: dummyData.find((item) => item.id == id)});
-})
-
-app.get("/delete-blog/:id", function (request, response) {
-    let id = request.params.id;
-    const result = dummyData.filter((item) => item.id != id);
-    result.sort((a,b) => {
-        return a.id - b.id;
-    })
-    console.log(result);
-    dummyData = result;
-
-    response.redirect("/");
-})
-
-function getTimeAfterPosted(data) {
-    for (let i = 0 ; i < data.length ; i++) {
-        const postedAt = data[i].postedAt.replace("WIB", "");
-        data[i].timeAfterPosted = getDistance(postedAt);
-    }
-    return;
-}
-
-const port = 5000
+// local server
 app.listen(port, function () {
     console.log(`server running on port : ${port}`);
 })
+
+// module.exports = app;
+
+// index?
+function home(request, response) {
+    response.render("index")
+}
+
+// project?
+async function blog(request, response) {
+    try{
+        const query = `SELECT * FROM "users";`
+        let obj = await sequelize.query(query, { type: QueryTypes.SELECT});
+
+        const data = obj.map(response => ({
+            ...response,
+            isLogin: request.session.isLogin,
+        }));
+        
+        response.render("index", { data, isLogin: request.session.isLogin, user: request.session.user, });
+    }   catch (error) {
+        console.log(error)
+    }
+}
+
+// blog-content?
+function editBlog(request, response) {
+    response.render("blog", {isLogin: request.session.isLogin, user: request.session.user,});
+}
+
+// add new project
+async function addBlog(request, response) {
+	try {
+		const {
+			name,
+			start_date,
+			end_date,
+			description,
+			nodejs,
+			reactjs,
+			nextjs,
+			typescript,
+		} = request.body;
+		const image = "stray1.png";
+
+		let start = new Date(start_date);
+		let end = new Date(end_date);
+
+		if (start > end) {
+			return console.log("You Fill End Date Before Start Date");
+		}
+
+		let difference = end.getTime() - start.getTime();
+		let days = difference / (1000 * 3600 * 24);
+		let weeks = Math.floor(days / 7);
+		let months = Math.floor(weeks / 4);
+		let years = Math.floor(months / 12);
+		let duration = "";
+
+		if (days > 0) {
+			duration = days + " Hari";
+		}
+		if (weeks > 0) {
+			duration = weeks + " Minggu";
+		}
+		if (months > 0) {
+			duration = months + " Bulan";
+		}
+		if (years > 0) {
+			duration = years + " Tahun";
+		}
+
+		// Mengubah nilai string kosong menjadi false jika checkbox tidak dipilih
+		const nodejsValue = nodejs === "true" ? true : false;
+		const reactjsValue = reactjs === "true" ? true : false;
+		const nextjsValue = nextjs === "true" ? true : false;
+		const typescriptValue = typescript === "true" ? true : false;
+
+		await sequelize.query(
+			`INSERT INTO "users" (name, start_date, end_date, description, nodejs, reactjs, nextjs, typescript, image, duration)
+             VALUES ('${name}','${start_date}','${end_date}','${description}',${nodejsValue},${reactjsValue},${nextjsValue},${typescriptValue},'${image}', '${duration}')`
+		);
+
+		res.redirect("/");
+	} catch (err) {
+		console.log(error);
+	}
+}
+
+// edit blog
+async function editBlog(request, response) {
+	try {
+		const id = parseInt(request.params.id);
+		const query = `SELECT * FROM "users" WHERE id=${id}`;
+		const obj = await sequelize.query(query, {
+			type: QueryTypes.SELECT,
+		});
+		response.render("edit-blog", { blog: obj[0], blogIndex: id });
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+// update blog
+async function updateBlog(request, response) {
+	try {
+		const { id } = request.params;
+		const {
+			name,
+			start_date,
+			end_date,
+			description,
+			nodejs,
+			reactjs,
+			nextjs,
+			typescript,
+		} = request.body;
+		const image = "project.jpeg";
+
+		let start = new Date(start_date);
+		let end = new Date(end_date);
+
+		if (start > end) {
+			return console.log("You Fill End Date Before Start Date");
+		}
+
+		let difference = end.getTime() - start.getTime();
+		let days = difference / (1000 * 3600 * 24);
+		let weeks = Math.floor(days / 7);
+		let months = Math.floor(weeks / 4);
+		let years = Math.floor(months / 12);
+		let duration = "";
+
+		if (days > 0) {
+			duration = days + " Hari";
+		}
+		if (weeks > 0) {
+			duration = weeks + " Minggu";
+		}
+		if (months > 0) {
+			duration = months + " Bulan";
+		}
+		if (years > 0) {
+			duration = years + " Tahun";
+		}
+
+		// Mengubah nilai string kosong menjadi false jika checkbox tidak dipilih
+		const nodejsValue = nodejs === "true" ? true : false;
+		const reactjsValue = reactjs === "true" ? true : false;
+		const nextjsValue = nextjs === "true" ? true : false;
+		const typescriptValue = typescript === "true" ? true : false;
+
+		await sequelize.query(
+			`UPDATE public."users" SET name='${name}', start_date='${start_date}', end_date='${end_date}', description='${description}', nodejs=${nodejsValue}, reactjs=${reactjsValue}, nextjs=${nextjsValue}, typescript=${typescriptValue}, duration='${duration}', image='${image}' WHERE id=${id};`,
+			{
+				type: sequelize.QueryTypes.UPDATE,
+			}
+		);
+
+		response.redirect("/");
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+// blog detail
+async function blogDetail(request, response) {
+	try {
+		const { id } = request.params;
+		const query = `SELECT * FROM "users" WHERE id=${id}`;
+		const obj = await sequelize.query(query, {
+			type: QueryTypes.SELECT,
+		});
+
+		const data = obj.map((response) => ({
+			...response,
+		}));
+
+		response.render("blog-detail", {
+			blog: data[0],
+			isLogin: request.session.isLogin,
+			user: request.session.user,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+// contact me
+function contactMe(request, response) {
+	response.render("contact", {
+		isLogin: request.session.isLogin,
+		user: request.session.user,
+	});
+}
+
+// Delete blog
+async function deleteBlog(request, response) {
+	try {
+		const { id } = request.params;
+
+		await sequelize.query(`DELETE FROM "users" WHERE id = ${id};`);
+		response.redirect("/");
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+function formRegister(request, response) {
+	response.render("register");
+}
+
+async function addUser(request, response) {
+	try {
+		const { name, email, password } = request.body;
+		const salt = 10;
+
+		await bcrypt.hash(password, salt, (error, hashPassword) => {
+			const query = `INSERT INTO users (name, email, password, "createdAt", "updatedAt") VALUES ('${name}', '${email}', '${hashPassword}', NOW(), NOW())`;
+			sequelize.query(query);
+			response.redirect("login");
+		});
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+function formLogin(request, response) {
+	response.render("login");
+}
+
+async function userLogin(request, response) {
+	try {
+		const { email, password } = request.body;
+		const query = `SELECT * FROM "users" WHERE email = '${email}'`;
+		let obj = await sequelize.query(query, { type: QueryTypes.SELECT });
+
+		console.log(obj);
+
+		// cek jika email belum teradaftar
+		if (!obj.length) {
+			request.flash("danger", "daftar dulu cok!");
+			return response.redirect("/login");
+		}
+
+		await bcrypt.compare(password, obj[0].password, (error, responseult) => {
+			if (!responseult) {
+				request.flash("danger", "passwordnya salah!");
+				return response.redirect("login");
+			} else {
+				request.session.isLogin = true;
+				request.session.user = obj[0].name;
+				request.flash("success", "Login berhasil");
+				response.redirect("/");
+			}
+		});
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+function logout(request, response) {
+	if (request.session.isLogin) {
+		request.session.destroy((error) => {
+			if (error) {
+				console.log(error);
+			} else {
+				response.redirect("/");
+			}
+		});
+	} else {
+		response.redirect("/");
+	}
+}
