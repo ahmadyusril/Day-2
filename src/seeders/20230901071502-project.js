@@ -8,6 +8,7 @@ module.exports = {
   [
     {
       name: 'Dumbways Mobile App - 2077',
+      author: "Ahmad Yusril",
       start_date: "2023-08-27",
       end_date: "2023-11-27",
       description: "Test Seeder 1",
@@ -18,6 +19,7 @@ module.exports = {
     },
     {
       name: 'Dumbways Mobile App - 3023',
+      author: "Ahmad Yusril",
       start_date: "2023-08-27",
       end_date: "2023-11-27",
       description: "Test Seeder 2",
@@ -28,6 +30,7 @@ module.exports = {
     },
     {
       name: 'Dumbways Mobile App - 2001',
+      author: "Ahmad Yusril",
       start_date: "2023-08-27",
       end_date: "2023-11-27",
       description: "Test Seeder 3",

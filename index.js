@@ -51,7 +51,7 @@ app.get("/", home);
 app.get("/home", homeLogin);
 app.get("/blog", blog);
 app.get("/contact", contactMe);
-app.get("/blog-detail/id", blogDetail);
+app.get("/blog-detail/:id", blogDetail);
 app.get("/edit-blog", editBlog);
 app.post("/blog", addBlog);
 app.get("/delete-blog/:id", deleteBlog);
@@ -106,9 +106,9 @@ async function blog(request, response) {
 }
 
 // blog-content?
-function editBlog(request, response) {
-    response.render("blog", {isLogin: request.session.isLogin, user: request.session.user});
-}
+// function editBlog(request, response) {
+//     response.render("blog", {isLogin: request.session.isLogin, user: request.session.user});
+// }
 
 // add new project
 async function addBlog(request, response) {
@@ -123,7 +123,7 @@ async function addBlog(request, response) {
 			nextjs,
 			typescript,
 		} = request.body;
-		const image = "stray1.png";
+		const image = "kiana.jpg";
 
 		let start = new Date(start_date);
 		let end = new Date(end_date);
@@ -174,7 +174,7 @@ async function addBlog(request, response) {
 		technologiesValue.push("typescript");
 		}
 		
-		const query = `INSERT INTO projects(author, name, start_date, end_date, description, technologies, image, "createdAt", "updatedAt") VALUES ('${author}', '${name}', '${start_date}',
+		const query = `INSERT INTO projects(author, name, start_date, end_date, description, technologies, image, "createdAt", "updatedAt") VALUES ('${user}', '${name}', '${start_date}',
 		 '${end_date}', '${description}', ARRAY ['${technologiesValue}'], '${image}', NOW(), NOW())`;
 		await sequelize.query(query, {type: sequelize.QueryTypes.POST})
 
@@ -254,7 +254,7 @@ async function updateBlog(request, response) {
 			}
 		);
 
-		response.redirect("/");
+		response.redirect("/home");
 	} catch (error) {
 		console.log(error);
 	}
@@ -297,7 +297,7 @@ async function deleteBlog(request, response) {
 		const { id } = request.params;
 
 		await sequelize.query(`DELETE FROM "projects" WHERE id = ${id};`);
-		response.redirect("/");
+		response.redirect("/home");
 	} catch (error) {
 		console.log(error);
 	}
@@ -338,7 +338,7 @@ async function userLogin(request, response) {
 
 		// cek jika email belum teradaftar
 		if (!obj.length) {
-			request.flash("danger", "daftar dulu cok!");
+			request.flash("danger", "Daftar dulu coeg!");
 			return response.redirect("/login");
 		}
 

@@ -157,61 +157,62 @@
 	<div style="width: 100%">
 		<h1 class="text-center my-5">MY PROJECT</h1>
 		<div id="contents" class="d-flex flex-wrap justify-content-center">
+			{{#if data.length}}
 			{{#each data}}
-						<div
-							style="
-							background-color: #f8f5f2;
-							width: 300px;
-							height: 600px;
-							margin: 30px;
-							border-radius: 10px;
-							box-shadow: 0px 0px 5px;
-							border-style: none;
-						"
-						>
-							<div class="px-3 py-3">
-								<img
-									src="project.jpeg"
-									style="width: 100%; height: 250px; border-radius: 5px"
-									alt="gambar"
-								/>
-								<a
-									href="/blog-detail/{{this.id}}"
-									class="text-decoration-none text-dark"
-									target="_blank"
-								>
-									<h1 class="fs-6 mt-2">{{this.name}}</h1>
-								</a>
-								<p>{{this.start_date}} - {{this.end_date}}</p>
-                <p id="startDate" style="display: none;">{{this.startDate}}</p>
-                <p id="endDate" style="display: none;">{{this.end_date}}</p>
-								<p id="duration"></p>
-								<div id="container-desc">
-									{{this.description}}
-								</div>
-								<div class="gap-5 fs-3">
-									{{#each this.technologies}}
-                  <div class="{{this}}"></div>
-                  {{/each}}
-								</div>
-								{{#if islogin}}
-									<div class="d-flex justify-content-between mt-3">
-										<a
-											href="/edit-blog/{{this.id}}"
-											class="btn btn-dark rounded-pill px-5"
-										>edit</a>
-										<a
-											href="/delete-blog/{{this.id}}"
-											class="btn btn-dark rounded-pill px-5"
-										>delete</a>
-									</div>
-								{{/if}}
-							</div>
-						</div>
-					{{/each}}
+			<div style="
+			background-color: #f8f5f2;
+			width: 300px;
+			height: 600px;
+			margin: 30px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 5px;
+			border-style: none;
+			  ">
+			  <div class="px-3 py-3">
+					<img
+					src="{{this.image}}"
+					style="width: 100%; height: 250px; border-radius: 5px"
+					alt="gambar"
+					/>
+					<a
+					href="/blog-detail/{{this.id}}"
+					class="text-decoration-none text-dark"
+					target="_blank">
+					<h1 class="fs-6 mt-2"><a href="/blog-detail/{{this.id}}">{{this.name}}</a></h1>
+					</a>
+					<p>{{this.start_date}} - {{this.end_date}}</p>
+                    <p id="startDate" style="display: none;">{{this.startDate}}</p>
+                    <p id="endDate" style="display: none;">{{this.end_date}}</p>
+					<p id="duration"></p>
+					<div id="container-desc">
+					{{this.description}}
+					</div>
+					<div class="gap-5 fs-3">
+
+					{{#each this.technologies}}
+					 <div class="{{this}}"></div>
+					 {{/each}}
+					 </div>
+					 <div class="d-flex justify-content-between mt-3">
+						<a href="/edit-blog/{{this.id}}" class="btn btn-dark rounded-pill px-5"
+						>Edit</a>
+						<a href="/delete-blog/{{this.id}}" class="btn btn-dark rounded-pill px-5"
+						 >Delete</a>
+					 </div>
+					 <div class="card-footer">
+                        <small class="text-body-secondary">Duration: {{this.createdAt}} | {{this.author}}</small>
+                    </div>
+					</div>
 				</div>
-			</div>
+			{{/each}}
+			{{else}}
+      			<div class="d-flex align-item-center justify-content-center w-100 py-5">
+        		<p class="fs-2">No Data Avaible</p>
+      </div>
+			{{/if}}
 		</div>
+	</div>
+</div>
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

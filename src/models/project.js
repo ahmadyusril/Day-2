@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   project.init({
     id: DataTypes.INTEGER,
-    author: DataTypes.INTEGER,
+    author: DataTypes.STRING,
     name: DataTypes.STRING,
     start_date: DataTypes.DATE,
     end_date: DataTypes.DATE,

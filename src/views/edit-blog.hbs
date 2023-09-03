@@ -79,28 +79,28 @@
       <form action="/blog" method="post">
         <div class="mb-3">
           <label for="title" class="form-label">Project Name</label>
-          <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="title" value="{{blog.name}}" aria-describedby="emailHelp">
         </div>
 
         <div class="row mb-3">
           <div class="col-md-6">
             <label for="startDate" class="form-label">Start Date</label>
-            <input type="date" class="form-control" id="startDate" aria-describedby="emailHelp">
+            <input type="date" class="form-control" id="startDate" value="{{blog.name}}" aria-describedby="emailHelp">
           </div>
           <div class="col-md-6">
             <label for="endDate" class="form-label">End Date</label>
-            <input type="date" class="form-control" id="endDate" aria-describedby="emailHelp">
+            <input type="date" class="form-control" id="endDate" value="{{blog.name}}" aria-describedby="emailHelp">
           </div>
         </div>
 
         <div class="mb-3">
           <label for="content" class="form-label">Description</label>
-          <textarea class="form-control" id="content" style="height: 200px; resize: none"></textarea>
+          <textarea class="form-control" id="content" value="{{blog.name}}" style="height: 200px; resize: none"></textarea>
         </div>
 
         <div class="mb-3">
           <label for="uploadimage" class="form-label">Upload Image</label>
-          <input type="file" class="form-control" id="uploadimage" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+          <input type="file" class="form-control" id="uploadimage" value="{{blog.name}}" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
         </div>
 
         <div class="d-flex justify-content-end mt-5">
