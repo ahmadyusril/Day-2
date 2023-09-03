@@ -284,7 +284,7 @@ async function addUser(request, response) {
 		const salt = 10;
 
 		await bcrypt.hash(password, salt, (error, hashPassword) => {
-			const query = `INSERT INTO projects (name, email, password, "createdAt", "updatedAt") VALUES ('${name}', '${email}', '${hashPassword}', NOW(), NOW())`;
+			const query = `INSERT INTO users (name, email, password, "createdAt", "updatedAt") VALUES ('${name}', '${email}', '${hashPassword}', NOW(), NOW())`;
 			sequelize.query(query);
 			response.redirect("login");
 		});
@@ -300,7 +300,7 @@ function formLogin(request, response) {
 async function userLogin(request, response) {
 	try {
 		const { email, password } = request.body;
-		const query = `SELECT * FROM "projects" WHERE email = '${email}'`;
+		const query = `SELECT * FROM "users" WHERE email = '${email}'`;
 		let obj = await sequelize.query(query, { type: QueryTypes.SELECT });
 
 		console.log(obj);
