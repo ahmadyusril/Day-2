@@ -15,14 +15,21 @@ module.exports = (sequelize, DataTypes) => {
   }
   project.init({
     id: DataTypes.INTEGER,
+    author: DataTypes.INTEGER,
     name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    start_date: DataTypes.DATE,
+    end_date: DataTypes.DATE,
+    description: DataTypes.TEXT,
+    technologies: DataTypes.ARRAY,
+    image: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'project',
+    timestamps: true,
+    createdAt: true,
+    updatedAt: true,
   });
   return project;
 };

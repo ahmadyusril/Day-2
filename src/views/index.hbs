@@ -36,31 +36,31 @@
         </ul>
 
         <div class="d-flex">
-						<ul class="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
-							{{#if isLogin}}
-								<li class="nav-item">
-									<a
-										class="nav-link text-danger active fw-semibold"
-										href="#"
-									>Hello, {{user}}</a>
-								</li>
-								<li class="nav-item ms-3">
-									<a class="nav-link" href="/logout">Logout</a>
-								</li>
-							{{else}}
-								<li class="nav-item">
-									<a class="nav-link" href="/register">Register</a>
-								</li>
-								<li class="nav-item ms-3">
-									<a
-										class="nav-link text-danger active fw-semibold"
-										href="/login"
-									>Login</a>
-								</li>
-							{{/if}}
-						</ul>
-						<a class="btn btn-danger" href="/contact">Contact Me</a>
-					</div>
+			<ul class="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
+				{{#if isLogin}}
+					<li class="nav-item">
+						<a
+							class="nav-link text-danger active fw-semibold"
+							href="#"
+						>Hello, {{user}}</a>
+					</li>
+					<li class="nav-item ms-3">
+						<a class="nav-link" href="/logout">Logout</a>
+					</li>
+				{{else}}
+					<li class="nav-item">
+						<a class="nav-link" href="/register">Register</a>
+					</li>
+					<li class="nav-item ms-3">
+						<a
+							class="nav-link text-danger active fw-semibold"
+							href="/login"
+						>Login</a>
+					</li>
+				{{/if}}
+			</ul>
+			<a class="btn btn-danger" href="/contact">Contact Me</a>
+		</div>
       </div>
     </div>
   </nav>
@@ -154,10 +154,10 @@
   <!-- Card -->
 
 <div class="container">
-			<div style="width: 100%">
-				<h1 class="text-center my-5">MY PROJECT</h1>
-				<div id="contents" class="d-flex flex-wrap justify-content-center">
-					{{#each data}}
+	<div style="width: 100%">
+		<h1 class="text-center my-5">MY PROJECT</h1>
+		<div id="contents" class="d-flex flex-wrap justify-content-center">
+			{{#each data}}
 						<div
 							style="
 							background-color: #f8f5f2;
@@ -183,25 +183,18 @@
 									<h1 class="fs-6 mt-2">{{this.name}}</h1>
 								</a>
 								<p>{{this.start_date}} - {{this.end_date}}</p>
-								<p>Durasi: {{this.duration}}</p>
+                <p id="startDate" style="display: none;">{{this.startDate}}</p>
+                <p id="endDate" style="display: none;">{{this.end_date}}</p>
+								<p id="duration"></p>
 								<div id="container-desc">
 									{{this.description}}
 								</div>
 								<div class="gap-5 fs-3">
-									{{#if this.nodejs}}
-										<i class="fa-brands fa-node"></i>
-									{{/if}}
-									{{#if this.nextjs}}
-										<i class="fa-brands fa-square-js"></i>
-									{{/if}}
-									{{#if this.reactjs}}
-										<i class="fa-brands fa-react"></i>
-									{{/if}}
-									{{#if this.typescript}}
-										<i class="bx bxl-typescript"></i>
-									{{/if}}
+									{{#each this.technologies}}
+                  <div class="{{this}}"></div>
+                  {{/each}}
 								</div>
-								{{#if this.isLogin}}
+								{{#if islogin}}
 									<div class="d-flex justify-content-between mt-3">
 										<a
 											href="/edit-blog/{{this.id}}"
@@ -220,11 +213,11 @@
 			</div>
 		</div>
     
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
-
-  {{!-- <script src="js/getTechnologies.js"></script> --}}
+<script src="js/getTechnologies.js"></script>
+<script src="js/getHbsDuration.js"></script>
 </body>
 
 </html>

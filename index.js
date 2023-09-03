@@ -84,7 +84,7 @@ async function homeLogin (request, response) {
             ...response,
         }));
         
-        response.render("index", { data, isLogin: request.session.isLogin, user: request.session.user});
+        response.render("index", { data:data, isLogin: request.session.isLogin, user: request.session.user});
     }   catch (error) {
         console.log(error)
     }
@@ -152,6 +152,9 @@ async function addBlog(request, response) {
 			duration = years + " Tahun";
 		}
 
+		const user = request.session.user
+		const author = request.session.userId;
+
 		// Mengubah nilai string kosong menjadi false jika checkbox tidak dipilih
 		const nodejsValue = nodejs === "true" ? true : false;
 		const reactjsValue = reactjs === "true" ? true : false;
@@ -171,13 +174,11 @@ async function addBlog(request, response) {
 		technologiesValue.push("typescript");
 		}
 		
+		const query = `INSERT INTO projects(author, name, start_date, end_date, description, technologies, image, "createdAt", "updatedAt") VALUES ('${author}', '${name}', '${start_date}',
+		 '${end_date}', '${description}', ARRAY ['${technologiesValue}'], '${image}', NOW(), NOW())`;
+		await sequelize.query(query, {type: sequelize.QueryTypes.POST})
 
-		await sequelize.query(
-			`INSERT INTO projects (name, start_date, end_date, description, technologies, image, duration, author)
-             VALUES ('${name}','${start_date}','${end_date}','${description}','${technologiesValue}','${image}', '${duration}', '${request.session.user}')`
-		);
-
-		res.redirect("/");
+		response.redirect("/home");
 	} catch (error) {
 		console.log(error);
 	}
@@ -347,6 +348,7 @@ async function userLogin(request, response) {
 				return response.redirect("login");
 			} else {
 				request.session.isLogin = true;
+				request.session.userId = obj[0].id;
 				request.session.user = obj[0].name;
 				request.flash("success", "Login berhasil");
 				response.redirect("/home");
