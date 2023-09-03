@@ -70,14 +70,14 @@ app.listen(port, function () {
 // module.exports = app;
 
 // index?
-function home(request, response) {
+async function home(request, response) {
     response.render("index")
 }
 
 // project?
 async function blog(request, response) {
     try{
-        const query = `SELECT * FROM "users";`
+        const query = `SELECT * FROM "projects";`
         let obj = await sequelize.query(query, { type: QueryTypes.SELECT});
 
         const data = obj.map(response => ({
@@ -145,7 +145,7 @@ async function addBlog(request, response) {
 		const typescriptValue = typescript === "true" ? true : false;
 
 		await sequelize.query(
-			`INSERT INTO "users" (name, start_date, end_date, description, nodejs, reactjs, nextjs, typescript, image, duration)
+			`INSERT INTO "projects" (name, start_date, end_date, description, nodejs, reactjs, nextjs, typescript, image, duration)
              VALUES ('${name}','${start_date}','${end_date}','${description}',${nodejsValue},${reactjsValue},${nextjsValue},${typescriptValue},'${image}', '${duration}')`
 		);
 
@@ -159,7 +159,7 @@ async function addBlog(request, response) {
 async function editBlog(request, response) {
 	try {
 		const id = parseInt(request.params.id);
-		const query = `SELECT * FROM "users" WHERE id=${id}`;
+		const query = `SELECT * FROM "projects" WHERE id=${id}`;
 		const obj = await sequelize.query(query, {
 			type: QueryTypes.SELECT,
 		});
@@ -183,7 +183,7 @@ async function updateBlog(request, response) {
 			nextjs,
 			typescript,
 		} = request.body;
-		const image = "project.jpeg";
+		const image = "stray2.png";
 
 		let start = new Date(start_date);
 		let end = new Date(end_date);
@@ -219,7 +219,7 @@ async function updateBlog(request, response) {
 		const typescriptValue = typescript === "true" ? true : false;
 
 		await sequelize.query(
-			`UPDATE public."users" SET name='${name}', start_date='${start_date}', end_date='${end_date}', description='${description}', nodejs=${nodejsValue}, reactjs=${reactjsValue}, nextjs=${nextjsValue}, typescript=${typescriptValue}, duration='${duration}', image='${image}' WHERE id=${id};`,
+			`UPDATE public."projects" SET name='${name}', start_date='${start_date}', end_date='${end_date}', description='${description}', nodejs=${nodejsValue}, reactjs=${reactjsValue}, nextjs=${nextjsValue}, typescript=${typescriptValue}, duration='${duration}', image='${image}' WHERE id=${id};`,
 			{
 				type: sequelize.QueryTypes.UPDATE,
 			}
@@ -235,7 +235,7 @@ async function updateBlog(request, response) {
 async function blogDetail(request, response) {
 	try {
 		const { id } = request.params;
-		const query = `SELECT * FROM "users" WHERE id=${id}`;
+		const query = `SELECT * FROM "projects" WHERE id=${id}`;
 		const obj = await sequelize.query(query, {
 			type: QueryTypes.SELECT,
 		});
@@ -267,7 +267,7 @@ async function deleteBlog(request, response) {
 	try {
 		const { id } = request.params;
 
-		await sequelize.query(`DELETE FROM "users" WHERE id = ${id};`);
+		await sequelize.query(`DELETE FROM "projects" WHERE id = ${id};`);
 		response.redirect("/");
 	} catch (error) {
 		console.log(error);
@@ -284,7 +284,7 @@ async function addUser(request, response) {
 		const salt = 10;
 
 		await bcrypt.hash(password, salt, (error, hashPassword) => {
-			const query = `INSERT INTO users (name, email, password, "createdAt", "updatedAt") VALUES ('${name}', '${email}', '${hashPassword}', NOW(), NOW())`;
+			const query = `INSERT INTO projects (name, email, password, "createdAt", "updatedAt") VALUES ('${name}', '${email}', '${hashPassword}', NOW(), NOW())`;
 			sequelize.query(query);
 			response.redirect("login");
 		});
@@ -300,7 +300,7 @@ function formLogin(request, response) {
 async function userLogin(request, response) {
 	try {
 		const { email, password } = request.body;
-		const query = `SELECT * FROM "users" WHERE email = '${email}'`;
+		const query = `SELECT * FROM "projects" WHERE email = '${email}'`;
 		let obj = await sequelize.query(query, { type: QueryTypes.SELECT });
 
 		console.log(obj);

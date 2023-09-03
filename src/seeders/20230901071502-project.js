@@ -3,11 +3,11 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(
-      'user', 
+    return await queryInterface.bulkInsert(
+      'projects', 
   [
     {
-      name: 'Dumbways Mobile App - 2023',
+      name: 'Dumbways Mobile App - 2077',
       start_date: "2023-08-27",
       end_date: "2023-11-27",
       description: "Test Seeder 1",
@@ -17,7 +17,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      name: 'Dumbways Mobile App - 2023',
+      name: 'Dumbways Mobile App - 3023',
       start_date: "2023-08-27",
       end_date: "2023-11-27",
       description: "Test Seeder 2",
@@ -27,7 +27,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      name: 'Dumbways Mobile App - 2023',
+      name: 'Dumbways Mobile App - 2001',
       start_date: "2023-08-27",
       end_date: "2023-11-27",
       description: "Test Seeder 3",
@@ -42,6 +42,7 @@ module.exports = {
 },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('user', null, {});
+    await queryInterface.bulkDelete('users', null, {});
   }
 };
+
