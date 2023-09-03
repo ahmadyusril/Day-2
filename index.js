@@ -48,11 +48,12 @@ app.use(
 
 // routing kayaknya
 app.get("/", home);
+app.get("/home", homeLogin);
 app.get("/blog", blog);
 app.get("/contact", contactMe);
 app.get("/blog-detail/id", blogDetail);
 app.get("/edit-blog", editBlog);
-app.post("/form-blog", addBlog);
+app.post("/blog", addBlog);
 app.get("/delete-blog/:id", deleteBlog);
 
 // login, Register, logout
@@ -73,7 +74,21 @@ app.listen(port, function () {
 async function home(request, response) {
     response.render("index")
 }
+// index login
+async function homeLogin (request, response) {
+	try{
+        const query = `SELECT * FROM "projects";`
+        let obj = await sequelize.query(query, { type: QueryTypes.SELECT});
 
+        const data = obj.map(response => ({
+            ...response,
+        }));
+        
+        response.render("index", { data, isLogin: request.session.isLogin, user: request.session.user});
+    }   catch (error) {
+        console.log(error)
+    }
+} 
 // project?
 async function blog(request, response) {
     try{
@@ -82,10 +97,9 @@ async function blog(request, response) {
 
         const data = obj.map(response => ({
             ...response,
-            isLogin: request.session.isLogin,
         }));
         
-        response.render("index", { data, isLogin: request.session.isLogin, user: request.session.user, });
+        response.render("blog", { data, isLogin: request.session.isLogin, user: request.session.user});
     }   catch (error) {
         console.log(error)
     }
@@ -93,7 +107,7 @@ async function blog(request, response) {
 
 // blog-content?
 function editBlog(request, response) {
-    response.render("blog", {isLogin: request.session.isLogin, user: request.session.user,});
+    response.render("blog", {isLogin: request.session.isLogin, user: request.session.user});
 }
 
 // add new project
@@ -143,14 +157,28 @@ async function addBlog(request, response) {
 		const reactjsValue = reactjs === "true" ? true : false;
 		const nextjsValue = nextjs === "true" ? true : false;
 		const typescriptValue = typescript === "true" ? true : false;
+		const technologiesValue = [];
+		if (nodejsValue === true) {
+		technologiesValue.push("nodeJs");
+		}
+		if (reactjsValue === true) {
+		technologiesValue.push("reactjs");
+		}
+		if (nextjsValue === true) {
+		technologiesValue.push("nextjs");
+		}
+		if (typescriptValue === true) {
+		technologiesValue.push("typescript");
+		}
+		
 
 		await sequelize.query(
-			`INSERT INTO "projects" (name, start_date, end_date, description, nodejs, reactjs, nextjs, typescript, image, duration)
-             VALUES ('${name}','${start_date}','${end_date}','${description}',${nodejsValue},${reactjsValue},${nextjsValue},${typescriptValue},'${image}', '${duration}')`
+			`INSERT INTO projects (name, start_date, end_date, description, technologies, image, duration, author)
+             VALUES ('${name}','${start_date}','${end_date}','${description}','${technologiesValue}','${image}', '${duration}', '${request.session.user}')`
 		);
 
 		res.redirect("/");
-	} catch (err) {
+	} catch (error) {
 		console.log(error);
 	}
 }
@@ -293,10 +321,12 @@ async function addUser(request, response) {
 	}
 }
 
+// login
 function formLogin(request, response) {
 	response.render("login");
 }
 
+// Buat post data login
 async function userLogin(request, response) {
 	try {
 		const { email, password } = request.body;
@@ -319,7 +349,7 @@ async function userLogin(request, response) {
 				request.session.isLogin = true;
 				request.session.user = obj[0].name;
 				request.flash("success", "Login berhasil");
-				response.redirect("/");
+				response.redirect("/home");
 			}
 		});
 	} catch (error) {
