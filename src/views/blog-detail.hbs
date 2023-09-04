@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Blog Content</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container my-3">
       <a class="navbar-brand" href="#">
-        <img src="image/logo.png" alt="brand-img" />
+        <img src="/image/logo.png" alt="brand-img" />
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,27 +34,23 @@
         </ul>
 
         <div class="d-flex">
-						<ul class="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
-							{{#if isLogin}}
-								<li class="nav-item">
-									<a
-										class="nav-link text-danger active fw-semibold"
-										href="#"
-									>Hello, {{user}}</a>
-								</li>
-								<li class="nav-item ms-3">
-									<a class="nav-link" href="/logout">Logout</a>
-								</li>
-							{{else}}
-								<li class="nav-item">
-									<a class="nav-link" href="/register">Register</a>
-								</li>
-								<li class="nav-item ms-3">
-									<a
-										class="nav-link text-danger active fw-semibold"
-										href="/login"
-									>Login</a>
-								</li>
+			<ul class="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
+				{{#if isLogin}}
+					<li class="nav-item">
+						<a
+							class="nav-link text-danger active fw-semibold"
+							href="#"
+							>Hello, {{user}}</a>
+					</li>
+					<li class="nav-item ms-3">
+						<a class="nav-link" href="/logout">Logout</a>
+					</li>
+				{{else}}
+					<li class="nav-item">
+						<a class="nav-link" href="/register">Register</a>
+					</li>
+					<li class="nav-item ms-3">
+						<a class="nav-link text-danger active fw-semibold" href="/login">Login</a></li>
 							{{/if}}
 						</ul>
 						<a class="btn btn-danger" href="/contact">Contact Me</a>
@@ -73,56 +70,46 @@
 		{{/if}}
 
 <!-- Content -->
-<div class="blog-detail">
-	<h1>{{blog.name}}</h1>
-	<div class="header-detail">
-		<div class="left-header">
-			<img src="/image/stray2.png" alt="gambar" id="image" />
+<div class="blog-detail mt-4">
+	<h1 class="fw-bold text-start">{{blog.name}}</h1>
+	<div class="left-header">
+		<div class="row my-4 p-2 bg-danger-subtle">
+			<img src="/image/{{blog.image}}" class="col-12 col-lg-6 img-fluid object-fit-cover" alt="gambar" style="height: 375px;" />
 		</div>
-		<div class="right-header">
+		<div class="right-header col-12 col-lg-6 banner-desc">
 			<div class="duration">
-				<h2>{{blog.duration}}</h2>
-				<p><i class="bx bxs-calendar"></i>{{blog.start_date}}
+				<h5>Duration:</h5>
+				<p>
+					<i class="fa-regular fa-calender-days"></i>{{blog.start_date}}
 					-
-					{{blog.end_date}}</p>
+					{{blog.end_date}}
+				</p>
 
-				<p><i class="bx bx-time-five"></i>{{blog.duration}}</p>
+				<p><i class="fa-solid fa-clock"></i>{{blog.duration}}</p>
 			</div>
 			<div class="technologi">
-				<h2>Technologies</h2>
-				<div class="icon">
-					<div>
-						{{#if blog.nodejs}}
-							<p>
-								<i class="bx bxl-nodejs"></i>
-								Node Js
-							</p>
-						{{/if}}
-						{{#if blog.reactjs}}
-							<p><i class="bx bxl-react"></i>React Js</p>
-						{{/if}}
-					</div>
-					<div>
-						{{#if blog.typescript}}
-							<p><i class="bx bxl-typescript"></i>Typescript</p>
-						{{/if}}
-						{{#if blog.nextjs}}
-							<p><i class="fa-brands fa-square-js"></i>Next Js</p>
-						{{/if}}
-					</div>
+				<h5>Technologies:</h5>
+				<div class="techstack mb-3">
+					{{blog.technologies}}
 				</div>
+			</div>
+			<div class="author">
+				<h5>Author:</h5>
+				<p>{{blog.author}}</p>
+			</div>
+			<div class="publish">
+				<h5>Published At:</h5>
+				<p>{{blog.createdAt}}</p>
 			</div>
 		</div>
 	</div>
 	<div class="paragraph">
-		<p>
-			{{blog.description}}
-		</p>
+		<h4>Description:</h4>
+		<p>{{blog.description}}</p>
 	</div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   <!-- End Content -->
   {{!-- <script src="js/getTechnologies.js"></script> --}}
 </body>
